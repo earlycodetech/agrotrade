@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { JobOpening } from "@/components/JobOpening";
 import { InfoBox } from "@/components/InfoBox";
+import { TallyCounter } from "@/components/Hooks";
 
 export default function Index () {
   return (
@@ -9,6 +10,8 @@ export default function Index () {
         <title>Agro Trade</title>
       </Head>
       <main>
+        <TallyCounter/>
+
         <InfoBox>
           <ul>
             <li>watermelon</li>
