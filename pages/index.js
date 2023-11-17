@@ -1,7 +1,4 @@
 import Head from "next/head";
-import { JobOpening } from "@/components/JobOpening";
-import { InfoBox } from "@/components/InfoBox";
-import { TallyCounter } from "@/components/Hooks";
 
 export default function Index () {
   return (
@@ -9,24 +6,22 @@ export default function Index () {
       <Head>
         <title>Agro Trade</title>
       </Head>
-      <main>
-        <TallyCounter/>
+      <main className="bg-home w-full">
+        {/* bottom content */}
+        <div>
+          <div>
+            <h1>
+              <span>Agro</span>
+              <span>Trade</span>
+            </h1>
+            <p>Your easy and reliable online marketplace to trade farm produce</p>
+          </div>
 
-        <InfoBox>
-          <ul>
-            <li>watermelon</li>
-            <li>orange</li>
-            <li>gauva</li>
-          </ul>
-        </InfoBox>
-
-        <JobOpening 
-        title='Next JS Hybrid Work' 
-        location='Nairobi'/>
-
-        <JobOpening 
-        title='React Developer' 
-        location='Enugu'/>
+          <blockquote>
+            <button>Login</button>
+            <button>Register</button>
+          </blockquote>
+        </div>
       </main>
     </>
   )
