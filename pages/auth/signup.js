@@ -2,6 +2,8 @@ import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { TextField } from "@mui/material";
+import { FcGoogle } from 'react-icons/fc';
+import { FaApple } from 'react-icons/fa';
 
 export default function Signup () {
     const [tab,setTab] = useState('buyer');
@@ -55,6 +57,21 @@ export default function Signup () {
 
                         <button className="h-[48px] w-full flex justify-center items-center bg-green-700 text-white text-xl rounded-md">Register</button>
                     </form>
+
+                    {/* OR seperator */}
+                    <div className="separator"> <span className='text-gray-400 my-3'>OR</span> </div>
+
+                    {/* social signup */}
+                    <div className="flex flex-col gap-3">
+                        <button 
+                        className="h-[48px] flex justify-center items-center border border-slate-400 rounded-md text-slate-900">
+                            <FcGoogle className="text-3xl mr-2"/> Sign up with Google
+                        </button>
+                        <button 
+                        className="h-[48px] flex justify-center items-center border border-slate-400 rounded-md text-slate-900">
+                            <FaApple className="text-3xl mr-2"/> Sign up with Apple
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>
