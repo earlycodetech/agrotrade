@@ -6,12 +6,12 @@ import { FaTiktok } from "react-icons/fa6";
 
 export default function Footer () {
     return (
-        <footer className="h-auto md:h-[60px] flex flex-col md:flex-row md:justify-between gap-3 md:gap-0 items-center bg-slate-900 px-20 py-4 md:py-0">
+        <footer className="h-auto md:h-[60px] flex flex-col md:flex-row md:justify-between gap-3 md:gap-0 items-center bg-lime-900 px-20 py-4 md:py-0">
             <ul className="flex flex-col md:flex-row gap-2 md:gap-4 items-center">
-                <li><Link href="#"><FaInstagram className="text-slate-300 text-3xl"/></Link></li>
-                <li><Link href="#"><FaYoutube className="text-slate-300 text-3xl"/></Link></li>
-                <li><Link href="#"><FaXTwitter className="text-slate-300 text-3xl"/></Link></li>
-                <li><Link href="#"><FaTiktok className="text-slate-300 text-3xl"/></Link></li>
+                <li><Link href="#"><FaInstagram className="text-lime-300 text-3xl"/></Link></li>
+                <li><Link href="#"><FaYoutube className="text-lime-300 text-3xl"/></Link></li>
+                <li><Link href="#"><FaXTwitter className="text-lime-300 text-3xl"/></Link></li>
+                <li><Link href="#"><FaTiktok className="text-lime-300 text-3xl"/></Link></li>
             </ul>
 
             <ul className="flex flex-row gap-4 items-center">
