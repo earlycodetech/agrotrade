@@ -53,7 +53,7 @@ export default function AboutMe () {
                     <Image 
                     width={400} 
                     height={400} 
-                    src="/joseph_ogbu.jpg" 
+                    src="/team/joseph_ogbu.jpg" 
                     alt="Joseph Ogbu"
                     className="rounded-md"/>
                 </div>
