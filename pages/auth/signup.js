@@ -24,7 +24,7 @@ export default function Signup () {
             <title>Signup | AgroTrade</title>
             <link rel="icon" href="/AGROTRADE.png" />
         </Head>
-        <main className="flex justify-center items-center py-20 px-3 md:px-0">
+        <main className="h-screen lg:h-auto flex justify-center items-center py-20 px-3 md:px-0">
             <div className="w-full md:w-[420px] flex flex-col gap-3 border border-gray-300 rounded-md p-3">
                 <Image 
                 width={400} 
