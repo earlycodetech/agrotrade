@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { AppContext } from "@/config/globals";
 import Head from "next/head";
 import Image from "next/image";
 import { TextField } from "@mui/material";
@@ -8,6 +9,8 @@ import { useFormik } from "formik";
 
 export default function Signup () {
     const [tab,setTab] = useState('buyer');
+    const {accountType,setAccountType} = useContext(AppContext);
+    console.log(accountType);
 
     const {handleBlur,handleChange, handleSubmit,touched,errors} = useFormik({
         initialValues:{},
@@ -19,8 +22,9 @@ export default function Signup () {
         <>
         <Head>
             <title>Signup | AgroTrade</title>
+            <link rel="icon" href="/AGROTRADE.png" />
         </Head>
-        <main className="h-screen flex justify-center items-center py-20 px-3 md:px-0">
+        <main className="flex justify-center items-center py-20 px-3 md:px-0">
             <div className="w-full md:w-[420px] flex flex-col gap-3 border border-gray-300 rounded-md p-3">
                 <Image 
                 width={400} 
@@ -45,23 +49,8 @@ export default function Signup () {
 
                     <form>
                         <div className="mb-2">
-                            <TextField className="w-full" variant="outlined" label="first name"/>
-                        </div>
-
-                        <div className="mb-2">
-                            <TextField className="w-full" variant="outlined" label="last name"/>
-                        </div>
-
-                        <div className="mb-2">
                             <TextField className="w-full" type="email" variant="outlined" label="email"/>
                         </div>
-
-                        {tab == 'farmer'
-                        ? <div className="mb-2">
-                            <TextField className="w-full" variant="outlined" label="company name"/>
-                        </div> 
-                        : null}
-
                         <button className="h-[48px] w-full flex justify-center items-center bg-green-700 text-white text-xl rounded-md">Register</button>
                     </form>
 
