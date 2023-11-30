@@ -30,7 +30,7 @@ export default function AboutMe () {
             <div className="grid sm:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-3">
                     <p className={`${nunito.className} text-2xl text-emerald-500`}>Hello, it's me</p>
-                    <h1 className={`${nunitoBold.className} text-4xl sm:text-6xl text-white`}>
+                    <h1 className={`${nunitoBold.className} text-4xl sm:text-5xl md:text-5xl text-white`}>
                         Joseph Ogbu<span className={`${nunitoBold.className} text-6xl sm:text-8xl text-emerald-500`}>.</span>
                     </h1>
                     <p className={`${nunito.className} text-white`}>I am a software developer, with a special focus on the design and development of web applications. I have experiences that cut across Android and iOS mobile app development. I have a strong interest in the design and implementation of algorithms and have been implementing their practices on the multiple projects that I have contributed to. Among the projects that I have built and contributed to is the popular Agro Trade, a web application for trade agriculture produce in bulk quantities.</p>
