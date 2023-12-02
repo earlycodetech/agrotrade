@@ -6,11 +6,14 @@ import { TextField } from "@mui/material";
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
 import { useFormik } from "formik";
+import { signIn } from 'next-auth/react';
+import { useSession } from "next-auth/react";
 
 export default function Signup () {
     const [tab,setTab] = useState('buyer');
     const {accountType,setAccountType} = useContext(AppContext);
-    console.log(accountType);
+    const {data:session} = useSession();
+    console.log(session.user.name)
 
     const {handleBlur,handleChange, handleSubmit,touched,errors} = useFormik({
         initialValues:{},
@@ -60,6 +63,7 @@ export default function Signup () {
                     {/* social signup */}
                     <div className="flex flex-col gap-3">
                         <button 
+                        onClick={() => signIn('google')}
                         className="h-[48px] flex justify-center items-center border border-slate-400 rounded-md text-slate-900">
                             <FcGoogle className="text-3xl mr-2"/> Sign up with Google
                         </button>
