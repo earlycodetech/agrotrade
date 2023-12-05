@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { AppContext } from "@/config/globals";
 import Head from "next/head";
 import Image from "next/image";
-import { TextField } from "@mui/material";
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
 import { useFormik } from "formik";
@@ -16,7 +15,6 @@ export default function Signup () {
     const {handleBlur,handleChange,handleSubmit,touched,errors} = useFormik({
         initialValues:{},
         onSubmit: () => {},
-        validationSchema:null,
     });
 
     return (
@@ -68,13 +66,11 @@ export async function getServerSideProps (context) {
         else {
             return {redirect:{destination:'/auth/continue-registration',permanent:false}}
         } 
-    } else {
-        return {redirect:{destination:'/auth/signup',permanent:false}}
-    }
+    } 
     
     return {
         props:{
-            session
+            session:JSON.parse(JSON.stringify(session))
         }
     }
 }

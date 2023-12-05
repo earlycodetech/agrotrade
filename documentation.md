@@ -17,4 +17,8 @@
 
 **05/12/2023 => 4**
 * Update: prevent authenticated users from accessing on /auth/signup.js  *
-* Solution: On this update, we would prevent authenticated users from accessing the signup page since it's the ideal thing to do - if people are already signed in, they shouldn't be able to visit the signup page. All you have to do is to go to /seller/index.js and copy the last block of code, the one about getServerSideProps. Next, paste it at the bottom of your /auth/signup.js Remember to import getServerSession, and authOptions*
+* Solution: On this update, we would prevent authenticated users from accessing the signup page since it's the ideal thing to do - if people are already signed in, they shouldn't be able to visit the signup page. All you have to do is to go to /seller/index.js and copy the last block of code, the one about getServerSideProps. Next, paste it at the bottom of your /auth/signup.js Remember to import getServerSession, and authOptions *
+
+**05/12/2023 => 5**
+* Update: configure signOut on profile.js *
+* Solution: Let's implement sign out on profile.js. To prevent multiple redirects, go to your auth/signup.js and remove the last block of else{} statement *

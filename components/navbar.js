@@ -11,7 +11,6 @@ const montserrat_500 = Montserrat({
 export default function NavBar () {
     const {data:session} = useSession();
     const accountType = 'seller';
-    console.log(session)
 
     return (
         <div>
