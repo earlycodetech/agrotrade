@@ -12,6 +12,7 @@ const validationRules = yup.object().shape({
 });
 
 export default function ContinueReg () {
+    const [tab,setTab] = useState('buyer');
 
     const {handleBlur,handleChange, handleSubmit,touched,errors,values} = useFormik({
         initialValues:{firstName:'',lastName:'',address:'',compName:''},
@@ -24,6 +25,7 @@ export default function ContinueReg () {
     return (
         <>
         <Head>
+            <link rel="icon" href="/AGROTRADE.png" />
             <title>Continue Registration | AgroTrade</title>
         </Head>
         <main className="h-screen flex justify-center items-center py-20 px-3 md:px-0">
@@ -33,6 +35,15 @@ export default function ContinueReg () {
                         <h2 className="text-2xl">Provide more information</h2>
                         <p className="text-xs text-green-600">Your account registration will be complete after this step</p>
                     </div>
+
+                    <ul className="grid grid-cols-2">
+                        <li 
+                        className={`text-center font-bold pb-3 cursor-pointer ${tab == 'farmer' ? styles.tabColor : null}`}
+                        onClick={() => setTab('farmer')}>Farmer</li>
+                        <li 
+                        className={`text-center font-bold pb-3 cursor-pointer ${tab == 'buyer' ? styles.tabColor : null}`}
+                        onClick={() => setTab('buyer')}>Buyer</li>
+                    </ul>
 
                     <form onSubmit={handleSubmit}>
                         <div className="mb-2">
@@ -73,7 +84,7 @@ export default function ContinueReg () {
                             <small className="text-red-500">{touched && errors.address ? errors.address : null}</small>
                         </div>
 
-                        {/* {tab == 'farmer'
+                        {tab == 'farmer'
                         ? <div className="mb-2">
                             <TextField 
                             className="w-full" 
@@ -85,7 +96,7 @@ export default function ContinueReg () {
                             value={values.compName}/>
                             <small className="text-red-500">{touched && errors.compName ? errors.compName : null}</small>
                         </div> 
-                        : null} */}
+                        : null}
 
                         <button 
                         type="submit"
