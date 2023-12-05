@@ -13,7 +13,6 @@ export default function Signup () {
     const [tab,setTab] = useState('buyer');
     const {accountType,setAccountType} = useContext(AppContext);
     const {data:session} = useSession();
-    console.log(session.user.name)
 
     const {handleBlur,handleChange, handleSubmit,touched,errors} = useFormik({
         initialValues:{},
