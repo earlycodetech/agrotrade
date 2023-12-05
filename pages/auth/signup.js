@@ -10,11 +10,9 @@ import { signIn } from 'next-auth/react';
 import { useSession } from "next-auth/react";
 
 export default function Signup () {
-    const [tab,setTab] = useState('buyer');
     const {accountType,setAccountType} = useContext(AppContext);
-    const {data:session} = useSession();
 
-    const {handleBlur,handleChange, handleSubmit,touched,errors} = useFormik({
+    const {handleBlur,handleChange,handleSubmit,touched,errors} = useFormik({
         initialValues:{},
         onSubmit: () => {},
         validationSchema:null,
@@ -35,31 +33,6 @@ export default function Signup () {
                 src='/farm-trade.jpg' alt="farm trade"/>
 
                 <div className="flex flex-col gap-5 md:gap-3">
-                    <ul className="grid grid-cols-2">
-                        <li 
-                        className={`text-center font-bold pb-3 cursor-pointer ${tab == 'farmer' ? styles.tabColor : null}`}
-                        onClick={() => setTab('farmer')}>Farmer</li>
-                        <li 
-                        className={`text-center font-bold pb-3 cursor-pointer ${tab == 'buyer' ? styles.tabColor : null}`}
-                        onClick={() => setTab('buyer')}>Buyer</li>
-                    </ul>
-
-                    <div className="flex flex-col gap-2">
-                        <h2 className="text-2xl">{`Register a ${tab} account`}</h2>
-                        <p className="text-xs text-green-600">{`Fill the form below to create a ${tab}'s account`}</p>
-                    </div>
-
-                    <form>
-                        <div className="mb-2">
-                            <TextField className="w-full" type="email" variant="outlined" label="email"/>
-                        </div>
-                        <button className="h-[48px] w-full flex justify-center items-center bg-green-700 text-white text-xl rounded-md">Register</button>
-                    </form>
-
-                    {/* OR seperator */}
-                    <div className="separator"> <span className='text-gray-400 my-3'>OR</span> </div>
-
-                    {/* social signup */}
                     <div className="flex flex-col gap-3">
                         <button 
                         onClick={() => signIn('google')}

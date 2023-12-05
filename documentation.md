@@ -10,3 +10,7 @@
 **05/12/2023 => 2**
 * Update: Addition of farmer/buyer tabs  *
 * Solution: You notice the changes and apply them on yours. You can copy some them on signup.js *
+
+**05/12/2023 => 2**
+* Update: removal of unused feature on /auth/signup.js  *
+* Solution: since we would no longer implement the other authentication providers, we have to clean up our page by removing them (including the farmer/buyer tabs). *
