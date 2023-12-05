@@ -1,4 +1,4 @@
-import { useState,useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "@/config/globals";
 import Head from "next/head";
 import Image from "next/image";
@@ -7,7 +7,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
 import { useFormik } from "formik";
 import { signIn } from 'next-auth/react';
-import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]";
 
 export default function Signup () {
     const {accountType,setAccountType} = useContext(AppContext);
@@ -53,4 +54,27 @@ export default function Signup () {
 
 const styles = {
     tabColor:'border-b-4 border-green-600'
+}
+
+export async function getServerSideProps (context) {
+    const session = await getServerSession(context.req,context.res,authOptions);
+    if (session) {
+        if (session.user_data?.accountType == 'seller') {
+            return {redirect:{destination:'/seller',permanent:false}}
+        } 
+        else if (session.user_data?.accountType == 'buyer') {
+            return {redirect:{destination:'/buyer',permanent:false}}
+        } 
+        else {
+            return {redirect:{destination:'/auth/continue-registration',permanent:false}}
+        } 
+    } else {
+        return {redirect:{destination:'/auth/signup',permanent:false}}
+    }
+    
+    return {
+        props:{
+            session
+        }
+    }
 }
