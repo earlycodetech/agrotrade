@@ -66,7 +66,7 @@ export async function getServerSideProps (context) {
         else {
             return {redirect:{destination:'/auth/continue-registration',permanent:false}}
         } 
-    } 
+    }
     
     return {
         props:{
