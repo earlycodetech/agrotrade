@@ -1,3 +1,5 @@
+
+import Head from "next/head";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 
@@ -18,14 +20,8 @@ export default function SellerDasboard() {
 export async function getServerSideProps (context) {
     const session = await getServerSession(context.req,context.res,authOptions);
     if (session) {
-        if (session.user_data?.accountType == 'seller') {
-            return {redirect:{destination:'/seller',permanent:false}}
-        } 
-        else if (session.user_data?.accountType == 'buyer') {
-            return {redirect:{destination:'/buyer',permanent:false}}
-        } 
-        else {
-            return {redirect:{destination:'/auth/continue-registration',permanent:false}}
+        if (session.user_data?.accountType != 'seller') {
+            return {redirect:{destination:'/',permanent:false}}
         } 
     } else {
         return {redirect:{destination:'/auth/signup',permanent:false}}
