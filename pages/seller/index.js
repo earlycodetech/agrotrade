@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
