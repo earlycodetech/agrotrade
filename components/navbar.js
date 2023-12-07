@@ -1,32 +1,63 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Montserrat } from "next/font/google";
 import { useSession } from "next-auth/react";
+import { Montserrat } from "next/font/google";
 
 const montserrat_500 = Montserrat({
     subsets: ['latin'],
     weight: '500'
 })
 
+const GeneralNav = () => {
+    return (
+        <ul className="flex flex-row items-center gap-12">
+            <li>
+                <Link href='/'>
+                    <Image width={38} height={38} src='/AGROTRADE.png' alt="logo"/>
+                </Link>
+            </li>
+            <li className={`${montserrat_500.className} hidden md:flex text-green-700 hover:text-yellow-700`}>
+                <Link href='/'>Home</Link>
+            </li>
+            <li className={`${montserrat_500.className} hidden md:flex text-green-700 hover:text-yellow-700`}>
+                <Link href='/about-us'>About Us</Link>
+            </li>
+            <li className={`${montserrat_500.className} hidden md:flex text-green-700 hover:text-yellow-700`}>
+                <Link href='/contact-us'>Contact Us</Link>
+            </li>
+            <li className={`${montserrat_500.className} text-green-700 hover:text-yellow-700`}>
+                <Link href='/products'>Products</Link>
+            </li>
+        </ul>
+    )
+}
+
+const SellerNav = () => {
+    return (
+        <ul className="flex flex-row items-center gap-12">
+            <li>
+                <Link href='/'>
+                    <Image width={38} height={38} src='/AGROTRADE.png' alt="logo"/>
+                </Link>
+            </li>
+            <li className={`${montserrat_500.className} hidden md:flex text-green-700 hover:text-yellow-700`}>
+                <Link href='/seller'>Dashboard</Link>
+            </li>
+            <li className={`${montserrat_500.className} hidden md:flex text-green-700 hover:text-yellow-700`}>
+                <Link href='/seller/create'>Create</Link>
+            </li>
+        </ul>
+)}
+
 export default function NavBar () {
     const {data:session} = useSession();
-    const accountType = 'seller';
 
     return (
         <div>
-            <nav className={`h-[58px] flex items-center px-4 sm:px-20 justify-between ${accountType == 'seller' ? 'bg-green-100' : 'bg-yellow-100'}`}>
+            <nav className={`h-[58px] flex items-center px-4 sm:px-20 justify-between ${session.user_data.accountType == 'seller' ? 'bg-green-100' : 'bg-yellow-100'}`}>
                 <div className="w-full flex flex-row justify-between items-center">
-                    <ul className="flex flex-row items-center gap-12">
-                        <li>
-                            <Link href='/'>
-                                <Image width={38} height={38} src='/AGROTRADE.png' alt="logo"/>
-                            </Link>
-                        </li>
-                        <li className={`${montserrat_500.className} hidden md:flex text-green-700 hover:text-yellow-700`}><Link href='/'>Home</Link></li>
-                        <li className={`${montserrat_500.className} hidden md:flex text-green-700 hover:text-yellow-700`}><Link href='/about-us'>About Us</Link></li>
-                        <li className={`${montserrat_500.className} hidden md:flex text-green-700 hover:text-yellow-700`}><Link href='/contact-us'>Contact Us</Link></li>
-                        <li className={`${montserrat_500.className} text-green-700 hover:text-yellow-700`}><Link href='/products'>Products</Link></li>
-                    </ul>
+                   
+                    {session.user_data.accountType == 'seller' ? <SellerNav/> : <GeneralNav/>}
 
                     {session
                     ? <Link href='/profile'>
