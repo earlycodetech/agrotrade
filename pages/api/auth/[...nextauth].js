@@ -25,6 +25,7 @@ export const authOptions = {
             const docSnap = await getDoc(docRef);
 
             session.user_data = docSnap.data();
+            session.uid = user.id;
 
             return session
         }
