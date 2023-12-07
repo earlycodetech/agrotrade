@@ -21,11 +21,12 @@ export const authOptions = {
     }),
     callbacks:{
         async session({session,user}) {
+            session.uid = user.id;
+            
             const docRef = doc(db,'users',user.id);
             const docSnap = await getDoc(docRef);
 
             session.user_data = docSnap.data();
-            session.uid = user.id;
 
             return session
         }
