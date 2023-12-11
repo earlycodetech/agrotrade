@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { SellerSideTabs } from "@/components/sellerSideTabs";
@@ -8,17 +7,20 @@ import { useFormik } from "formik";
 import * as yup from 'yup';
 import { TextField } from "@mui/material";
 import { db,storage } from "@/config/firebase.config";
+import { addDoc,collection,updateDoc,doc } from "firebase/firestore";
 import { ref,uploadString,getDownloadURL } from 'firebase/storage';
 import ActivityIndicator from "@/utilities/activityIndicator";
 import CustomDialog from "@/utilities/customDialog";
 
 const validationRules = yup.object().shape({
-    firstName:yup.string().required(),
+    title:yup.string().required().min(16),
+    description:yup.string().required().min(300),
+    availability:yup.number().required(),
+    price:yup.number().required().min(100),
 });
 
 export default function SellerDasboard() {
     const [showActivityIndicator,setShowActivityIndicator] = useState(false);
-    const [formInput,setFormInput] = useState('');
     const [selectedFile,setSelectedFile] = useState(null);
 
     //CONFIRMATION DIALOG >>>> START
@@ -41,14 +43,15 @@ export default function SellerDasboard() {
     }
 
     // create post to firestore
-    const handleCreateProduct = async () => {
+    const handleCreateProduct = async (title,description,availability,price) => {
         setShowActivityIndicator(true);
 
         const docRes = await addDoc(collection(db,'products'),{
-            title:values.title,
-            description:values.description,
-            availability:values.availability,
-            price:values.price
+            title:title,
+            description:description,
+            availability:availability,
+            price:price,
+            timeCreated:new Date().getTime(),
         });
 
         const imageRef = ref(storage,`products/${docRes.id}/image`);
@@ -69,10 +72,14 @@ export default function SellerDasboard() {
         })
     }
 
-    const {handleBlur,handleChange, handleSubmit,touched,errors,values} = useFormik({
+    const {handleBlur,handleChange,handleSubmit,touched,errors,values} = useFormik({
         initialValues:{title:'',description:'',availability:'',price:''},
         onSubmit: () => {
-      
+            if (selectedFile) {
+                handleCreateProduct(values.title,values.description,values.availability,values.price)
+            } else {
+                alert('Please upload an image')
+            }
         },
         validationSchema:validationRules,
     });
@@ -116,6 +123,7 @@ export default function SellerDasboard() {
 
                         <div className="mb-2">
                             <TextField 
+                            type="number"
                             className="w-full" 
                             variant="outlined" 
                             label="Availability"

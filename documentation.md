@@ -26,3 +26,12 @@
 **11/12/2023 => 1**
 * Update: Multiple updates *
 * Solution: Multiple updates were preformed, including fixing the session error message that results from the navbar codes when a user is not signed in *
+
+**11/12/2023 => 2**
+* Task: Initialize Storage of Firebase *
+* Action: Login to your firbase account, then click on 'Build' and select 'Storage'. On the new page, click on 'Get started' and complete the steps following it.
+On successful creation, go to the rules tab and update the rules to 'true'. Change this to true => allow read, write: if false; *
+
+**11/12/2023 => 2**
+* Task: Creation of products *
+* Action: Here, we wrote codes to create products. The details of the products created would be found on the collect "products" within firestore. The image uploaded along the product creation would be found in your "Storage" on firebase *
