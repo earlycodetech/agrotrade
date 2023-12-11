@@ -51,7 +51,7 @@ export default function ContinueReg () {
 
     const {handleBlur,handleChange, handleSubmit,touched,errors,values} = useFormik({
         initialValues:{firstName:'',lastName:'',address:'',compName:''},
-        onSubmit: (value) => {
+        onSubmit: () => {
             //call and use user update function
             handleUpdateUser(values.firstName,values.lastName,values.address,tab,values.compName)
         },

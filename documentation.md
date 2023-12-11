@@ -22,3 +22,7 @@
 **05/12/2023 => 5**
 * Update: configure signOut on profile.js *
 * Solution: Let's implement sign out on profile.js. To prevent multiple redirects, go to your auth/signup.js and remove the last block of else{} statement *
+
+**11/12/2023 => 1**
+* Update: Multiple updates *
+* Solution: Multiple updates were preformed, including fixing the session error message that results from the navbar codes when a user is not signed in *

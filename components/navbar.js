@@ -54,17 +54,17 @@ export default function NavBar () {
 
     return (
         <div>
-            <nav className={`h-[58px] flex items-center px-4 sm:px-20 justify-between ${session.user_data.accountType == 'seller' ? 'bg-green-100' : 'bg-yellow-100'}`}>
+            <nav className={`h-[58px] flex items-center px-4 sm:px-20 justify-between ${session?.user_data.accountType == 'seller' ? 'bg-green-100' : 'bg-yellow-100'}`}>
                 <div className="w-full flex flex-row justify-between items-center">
                    
-                    {session.user_data.accountType == 'seller' ? <SellerNav/> : <GeneralNav/>}
+                    {session?.user_data.accountType == 'seller' ? <SellerNav/> : <GeneralNav/>}
 
                     {session
                     ? <Link href='/profile'>
                         <Image 
                         width={48} 
                         height={48} 
-                        src={session.user.image} 
+                        src={session?.user.image} 
                         alt="profile image" 
                         className="rounded-full"/>
                     </Link>
