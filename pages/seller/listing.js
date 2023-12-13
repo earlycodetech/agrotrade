@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { SellerSideTabs } from "@/components/sellerSideTabs";
@@ -65,7 +66,12 @@ export default function Listing() {
                             <TableBody>
                             {products.map((doc) => (
                                 <TableRow key={doc.id}>
-                                    <TableCell>{doc.data.title}</TableCell>
+                                    <TableCell>
+                                        <blockquote className="flex flex-row gap-2 items-center">
+                                            <Image width={52} height={52} src={doc.data.imageUrl} alt="product"/>
+                                            <span>{doc.data.title}</span>
+                                        </blockquote>
+                                    </TableCell>
                                     <TableCell>NGN{doc.data.price}</TableCell>
                                     <TableCell>{doc.data.availability}</TableCell>
                                     <TableCell>{new Date(doc.data.timeCreated).toLocaleDateString()}</TableCell>
