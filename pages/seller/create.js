@@ -14,7 +14,7 @@ import CustomDialog from "@/utilities/customDialog";
 
 const validationRules = yup.object().shape({
     title:yup.string().required().min(16),
-    description:yup.string().required().min(300),
+    description:yup.string().required().min(160),
     availability:yup.number().required(),
     price:yup.number().required().min(100),
 });
@@ -76,7 +76,7 @@ export default function SellerDasboard() {
         initialValues:{title:'',description:'',availability:'',price:''},
         onSubmit: () => {
             if (selectedFile) {
-                handleCreateProduct(values.title,values.description,values.availability,values.price)
+                handleCreateProduct(values.title,values.description,values.availability,values.price);
             } else {
                 alert('Please upload an image')
             }

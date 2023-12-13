@@ -35,3 +35,8 @@ On successful creation, go to the rules tab and update the rules to 'true'. Chan
 **11/12/2023 => 2**
 * Task: Creation of products *
 * Action: Here, we wrote codes to create products. The details of the products created would be found on the collect "products" within firestore. The image uploaded along the product creation would be found in your "Storage" on firebase *
+
+**13/12/2023 => 1**
+* Task: Display products from firestore database *
+* Action: On the seller dashboard (/seller/listing) we wrote firestore commands to fetch records from the "products" collection. The fetched data is stored on a useState instance. We displayed the products data held on the useState using a Material UI table component. Also, during the fetching process from firestore, we briefly kept the user busy with and our custom activity indicator. *
+
